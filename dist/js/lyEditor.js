@@ -6771,11 +6771,10 @@ _e(function (E, $) {
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             xhr.setRequestHeader("Content-Type","application/json");
             if(document.cookie.indexOf ('console-token') > -1){//如果cookie的console-token存在的话
-                let reg = new RegExp("(^| )"+'console-token'+"=([^;]*)(;|$)");
-                let cookieArr = document.cookie.match(reg);
-
+                var reg = new RegExp("(^| )"+'console-token'+"=([^;]*)(;|$)");
+                var cookieArr = document.cookie.match(reg);
                 xhr.setRequestHeader("console-token",cookieArr[2])
-            }else if{
+            }else{
                 alert("token失效,请退出重新登录!");
             }
             xhr.addEventListener('load', function (e) {
