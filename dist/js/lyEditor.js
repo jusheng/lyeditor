@@ -45,7 +45,8 @@
 (function (window, $) {
     if (window.wangEditor) {
         // 重复引用
-        alert('一个页面不能重复引用 wangEditor.js 或 wangEditor.min.js ！！！');
+        console.log('一个页面不能重复引用 wangEditor.js 或 wangEditor.min.js ！！！');
+        console.log(window.wangEditor);
         return;
     }
 
@@ -6780,8 +6781,8 @@ _e(function (E, $) {
             xhr.setRequestHeader("Content-Type","application/json");
             // xhr.setRequestHeader("console-token",document.cookie.split(';')[1].split('=')[1]);
             if(document.cookie.indexOf ('console-token') > -1){//如果cookie的console-token存在的话
-              xhr.setRequestHeader("console-token",document.cookie.split(';')[1].split('=')[1])
-              console.log(document.cookie.split(';')[1].split('=')[1]);
+              xhr.setRequestHeader("console-token",document.cookie.split('=')[1])
+              // console.log(document.cookie);
             }
             xhr.addEventListener('load', function (e) {
                 try{
@@ -6802,7 +6803,7 @@ _e(function (E, $) {
                   console.log(xhr.responseText);  // text普通文本响应
                   resultText = window.sessionStorage.domain+JSON.parse(xhr.responseText).data.filePath;
                   console.log(resultText);
-                  onload.call(editor, resultText);
+                  // onload.call(editor, resultText);
             
                 }else{
                   alert('不成功的响应');
