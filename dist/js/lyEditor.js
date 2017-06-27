@@ -6761,28 +6761,22 @@ _e(function (E, $) {
                 formData.append(key, value);
             });
 
-            // // 开始上传
-            // xhr.open('POST', uploadImgUrl, true);
-            // // xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");  // 将参数解析成传统form的方式上传
-            // // 修改自定义配置的headers
-            // $.each(headers, function (key, value) {
-            //     xhr.setRequestHeader(key, value);
-            // });
-
             // // 跨域上传时，传cookie
-            // xhr.withCredentials = editor.config.withCredentials || true;
+            xhr.withCredentials = editor.config.withCredentials || true;
 
             // // 发送数据
             
-            // xhr.send(JSON.stringify(ad));
             // // 
             xhr.open("post", uploadImgUrl, true);
             xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
             xhr.setRequestHeader("Content-Type","application/json");
-            // xhr.setRequestHeader("console-token",document.cookie.split(';')[1].split('=')[1]);
             if(document.cookie.indexOf ('console-token') > -1){//如果cookie的console-token存在的话
-              xhr.setRequestHeader("console-token",document.cookie.split('=')[1])
-              // console.log(document.cookie);
+                let reg = new RegExp("(^| )"+'console-token'+"=([^;]*)(;|$)");
+                let cookieArr = document.cookie.match(reg);
+
+                xhr.setRequestHeader("console-token",cookieArr[2])
+            }else if{
+                alert("token失效,请退出重新登录!");
             }
             xhr.addEventListener('load', function (e) {
                 try{
@@ -6799,7 +6793,7 @@ _e(function (E, $) {
             xhr.onreadystatechange = function(){
               if(xhr.readyState===4){
                 if(xhr.status===200){
-                  console.log('XHR接收到了服务器返回的成功响应：');
+                  // console.log('XHR接收到了服务器返回的成功响应：');
                   console.log(xhr.responseText);  // text普通文本响应
                   resultText = window.sessionStorage.domain+JSON.parse(xhr.responseText).data.filePath;
                   console.log(resultText);
@@ -6813,7 +6807,7 @@ _e(function (E, $) {
             xhr.send(JSON.stringify(ad));
             timeoutId = setTimeout(timeoutCallback, uploadTimeout);
 
-            E.log('开始上传111...并开始超时计算');
+            E.log('开始上传..并开始超时计算');
         };
     });
 });
@@ -8619,7 +8613,7 @@ _e(function (E, $) {
 });
 // 版权提示
 _e(function (E, $) {
-    E.info('本页面富文本编辑器由 wangEditor 提供，liyang改造，http://wangeditor.github.io/ ');
+    // E.info('本页面富文本编辑器由wangEditor提供，liyang改造，http://wangeditor.github.io/ ');
 });
     
     // 最终返回wangEditor构造函数
