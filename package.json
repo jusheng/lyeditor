@@ -1,0 +1,22 @@
+{
+  "name": "lyeditor",
+  "version": "1.0.0",
+  "description": "\"design for jintoushou Services Ltd\"",
+  "main": "dist/js/lyEditor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jusheng/lyeditor.git"
+  },
+  "keywords": [
+    "editor"
+  ],
+  "author": "liyang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jusheng/lyeditor/issues"
+  },
+  "homepage": "https://github.com/jusheng/lyeditor#readme"
+}
