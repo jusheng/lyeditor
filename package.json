@@ -1,6 +1,6 @@
 {
   "name": "lyeditor",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "\"design for jintoushou Services Ltd\"",
   "main": "dist/js/lyEditor.js",
   "scripts": {
