@@ -1,5 +1,5 @@
 # lyeditor
-一款富文本编辑器，图片上传到aliyun服务器
+一款富文本编辑器，图片上传到aliyun服务器,
 package.json里加入lyeditor依赖，
 npm install 
 然后import lyeditor,
